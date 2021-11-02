@@ -1,4 +1,6 @@
 import { Probot } from "probot";
+import  deliveryFrequency  from "./handlers/delivery-frequency"
+
 
 export = (app: Probot) => {
   app.on("issues.opened", async (context) => {
@@ -7,6 +9,12 @@ export = (app: Probot) => {
     });
     await context.octokit.issues.createComment(issueComment);
   });
+
+  app.on("push", async (context) => {
+    deliveryFrequency(context);
+  });
+
+
   // For more information on building apps:
   // https://probot.github.io/docs/
 
