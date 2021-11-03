@@ -4,6 +4,7 @@ import  deliveryFrequency  from "./handlers/delivery-frequency"
 
 export = (app: Probot) => {
   app.on("issues.opened", async (context) => {
+    console.log("V")
     const issueComment = context.issue({
       body: "Thanks for opening this issue!",
     });
